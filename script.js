@@ -1,28 +1,40 @@
-// 1. Data (Quiz Questions)
+// 1. Data (Quiz Questions) object: key/value
 const questions = [
     {
-        questions: "lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus unde delectus saepe minima perspiciatis aut dolorum",
-        options: ["true", "let", "const", "none of the above"],
-        answer: 1 // index of your correct answer
+        questions: "What is the primary goal of a business?",
+        options: ["To provide value to customers", "To pay taxes", "To make a profit", "To employ people"],
+        answer: 2 // index of your correct answer
     },
 
     {
-        questions: "lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus unde delectus saepe minima perspiciatis aut dolorum",
-        options: ["true", "let", "const", "none of the above"],
-        answer: 1 // index of your correct answer
+        questions: "Which of these is an example of a fixed cost?",
+        options: ["Raw materials","Rent", "Sales commissions", "Marketing expenses"],
+        answer: 1// index of your correct answer
     },
 
     {
-        questions: "lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus unde delectus saepe minima perspiciatis aut dolorum",
-        options: ["true", "let", "const", "none of the above"],
-        answer: 1 // index of your correct answer
+        questions: "What does ROI stand for in business?",
+        options: ["Return on Investment", "Revenue of Interest", "Rate of Interest", "Reinvestment Opportunity"],
+        answer: 0 // index of your correct answer
     },
 
-    {
-        questions: "lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus unde delectus saepe minima perspiciatis aut dolorum",
-        options: ["true", "let", "const", "none of the above"],
-        answer: 1 // index of your correct answer
-    }
+     {
+        questions: "Which one is marketing strategy?",
+        options: ["Hiring staff", "Paying rent", "Buying equipment", "Social media advertisement"],
+        answer: 3 // index of your correct answer
+    },
+
+     {
+        questions: "What is target audience in business?",
+        options: ["All people in a country", "Company employee", "Business competitors", "The specific group of customers a business aims to sell"],
+        answer: 3 // index of your correct answer
+    },
+
+     {
+        questions: "Which document shows a company's income and expenses?",
+        options: ["Profit and loss statement", "Receipt", "Invoice", "Business plan"],
+        answer: 0 // index of your correct answer
+    },
 ]
 
 // 2. State variables
@@ -37,7 +49,7 @@ const optionsContainer = document.getElementById("options-container");
 const progressText = document.getElementById("progress-text");
 const progressFill = document.getElementById("progress-fill");
 const scoreText = document.getElementById("score-text");
-const restartBtn = document.getElementById("restart");
+const restartBtn = document.getElementById("restart-btn");
 
 // 4. functions
 function loadQuestions () {
@@ -68,7 +80,7 @@ function selectOption(selectedIndex, selectedBtn) {
     const buttons = optionsContainer.querySelectorAll(".option-btn");
 
     // disables all button once an option is picked
-    button.forEach(btn => btn.disables = true)
+    buttons.forEach(btn => btn.disabled = true)
 
     // check answer
     if (selectedIndex === currentQ.answer) {
@@ -94,7 +106,7 @@ function selectOption(selectedIndex, selectedBtn) {
 function showResults () {
     quizbody.classList.add("hidden");
     resultScreen.classList.remove("hidden");
-    scoreText.textContent = `You score ${score} out of ${questions.length}!`;
+    scoreText.textContent = `You scored ${score} out of ${questions.length}!`;
 }
 
 const restartQuiz = () => {
@@ -109,4 +121,4 @@ const restartQuiz = () => {
 restartBtn.addEventListener('click', restartQuiz);
 
 // initial load
-loadQuestions()
+loadQuestions();
